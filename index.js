@@ -4,8 +4,11 @@ const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const db = require('./db')
 const PORT = process.env.PORT || 3407
+console.log("Line 7")
 const app = express()
+console.log("line 9")
 module.exports = app
+console.log("line 11")
 
 /**
  * In your development environment, you can keep all of your
@@ -18,6 +21,8 @@ module.exports = app
 // if (process.env.NODE_ENV !== 'production') require('../secrets')
 
 const createApp = () => {
+  console.log("line 24")
+
   // logging middleware
   app.use(morgan('dev'))
 

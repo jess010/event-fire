@@ -8,7 +8,7 @@ const Event = db.define('event', {
     allowNull: false
   },
   listener: {
-    type: Sequelize.STRING,  // The nature of listener that is registered to the event on that node. May not be needed to store this detail.
+    type: Sequelize.STRING,  // The nature of listener that is registered to the event on that node. May not be needed to store this detail on backend.
     allowNull: false
   }
 })

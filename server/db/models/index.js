@@ -9,7 +9,7 @@ const Event = require('./event')
 Result.belongsTo(PageTest, {foreignKey: 'pageTest_id'})
 PageTest.hasMany(Result, {foreignKey: 'pageTest_id'})
 
-// Result.belongsTo(XNode, {foreignKey: 'xNode_id'})
+// Result.belongsTo(XNode, {foreignKey: 'xNode_id'})  --> can get node from event table
 // XNode.hasMany(Result, {foreignKey: 'xNode_id'})
 
 //One to one relationship between event and event result

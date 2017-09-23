@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 
 /**
  * Navbar (Dumb) Component:
@@ -7,8 +7,13 @@ import { Link } from 'react-router-dom'
 */
 export default function Navbar () {
   return (
-    <div className='navbar'>
-        <Link to='/'>Home</Link>
+    <div>
+        <nav className="navbar-nav">
+            <ul>
+                <Link to='/'>Home</Link>
+                <Link to='/honey'>OK</Link>
+            </ul>
+        </nav>
     </div>
   );
 }

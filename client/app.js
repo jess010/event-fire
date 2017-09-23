@@ -1,13 +1,11 @@
-//import history from './history'
+import history from './history'
 // unsure as to whether we are likely to need history. We may well, with the VisualEvent shenanigans
 
-//history={history} -> removed from 'Router' statement
 import React from 'react'
 import {Router} from 'react-router'
 import {Route, Switch} from 'react-router-dom'
-
-import Home from './containers/home'
-import Navbar from './components/navbar'
+import { Home } from './containers'
+import { Navbar } from './components'
 
 
 /**
@@ -15,13 +13,13 @@ import Navbar from './components/navbar'
  */
 export default function App () {
   return (
-    <Router>
+    <Router history={history}>
       <div>
-        <Navbar />
+        <Navbar/>
         <Switch>
           {/* Routes placed here are available to all visitors */}
 
-          <Route path='/' component={Home}/>
+          <Route exact path='/' component={Home}/>
         </Switch>
       </div>
     </Router>

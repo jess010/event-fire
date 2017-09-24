@@ -19,3 +19,7 @@ Result.hasOne(Event, {foreignKey: 'event_id'})
 //One to Many relationship between node and events
 XNode.belongsTo(Event, {foreignKey: 'node_id'})
 Event.hasOne(XNode, {foreignKey: 'node_id'})
+
+module.exports = {
+  XNode, PageTest, Result, Event
+}

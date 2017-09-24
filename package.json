@@ -24,9 +24,14 @@
         "connect-session-sequelize": "^4.1.0",
         "express": "^4.14.1",
         "express-session": "^1.15.1",
+        "fs": "0.0.1-security",
         "ghostdriver": "^2.0.0",
         "history": "^4.6.3",
+        "ignore-loader": "^0.1.2",
+        "jsdom": "^11.2.0",
         "morgan": "^1.8.1",
+        "net": "^1.0.2",
+        "path": "^0.12.7",
         "pg": "^6.1.2",
         "pg-hstore": "^2.3.2",
         "prop-types": "^15.5.8",
@@ -40,7 +45,9 @@
         "redux-thunk": "^2.2.0",
         "selenium-webdriver": "^3.5.0",
         "sequelize": "^4.3.1",
-        "socket.io": "^2.0.3"
+        "socket.io": "^2.0.3",
+        "tls": "0.0.1",
+        "watchify": "^3.9.0"
     },
     "devDependencies": {
         "axios-mock-adapter": "^1.9.0",

@@ -20,10 +20,31 @@
     position: relative;
 	}
 
-  img.icon-img {
-    margin: 0 auto 3% auto;
-    opacity: 0.5;
-  }
+  	img.icon-img {
+    	margin: 0 auto 0.5% auto;
+    	opacity: 0.5;
+  	}
+
+  	ul.nav-list {
+  		margin: 0;
+  		display: block;
+  	}
+
+  	a.nav-link {
+  		margin: 0;
+  		display: block;
+  	}
+
+  	nav.my-nav {
+  		margin: 0;
+  		display: inline;
+  	}
+
+  	div.nav-div {
+  		margin: 0;
+  		display: inline;
+  	}
+
 
 	article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
 		display: block;
@@ -1604,27 +1625,73 @@
 
 		@media screen and (max-width: 1680px) {
 
-			body, input, select, textarea {
+			body, select, textarea {
 				font-size: 13pt;
+				text-align: center;
 
 			}
+
+			input {
+				font-size: 20pt;
+				text-align: center;
+			}
+
+		  	ul.nav-list {
+		  		margin: 0;
+		  		display: block;
+		  	}
+
+		  	a.nav-link {
+		  		margin: 0;
+		  		display: block;
+		  		text-align: left;
+		  	}
+
+		  	nav.my-nav {
+		  		margin: 0;
+		  		display: inline;
+		  	}
+
+		  	div.nav-div {
+		  		margin: 0;
+		  		display: inline;
+		  	}
+
 
 		}
 
 		@media screen and (max-width: 1280px) {
 
-			body, input, select, textarea {
+			body, select, textarea {
 				font-size: 13pt;
 				width: 100%;
+				text-align: center;
 
 			}
+
+			input {
+				font-size: 16pt;
+				text-align: center;
+			}
+
+			a.nav-link {
+		  		margin: 0;
+		  		display: inline-block;
+		  		text-align: left;
+		  	}
 
 		}
 
 		@media screen and (max-width: 980px) {
 
-			body, input, select, textarea {
-				font-size: 12pt;
+			body, select, textarea {
+				font-size: 13pt;
+				text-align: center;
+			}
+
+			input {
+				font-size: 16pt;
+				text-align: center;
 			}
 
 		}
@@ -1633,6 +1700,7 @@
 
 			body, input, select, textarea {
 				font-size: 12pt;
+				text-align: center;
 			}
 
 		}
@@ -1641,6 +1709,7 @@
 
 			body, input, select, textarea {
 				font-size: 12pt;
+				text-align: center;
 			}
 
 		}
@@ -3114,16 +3183,16 @@
 
 	body {
 		position: relative;
-		padding-top: 5em;
+		padding-top: 0.5em;
 	}
 
 	#header {
 		background: #1c1c1c;
 		color: #d5d5d5;
 		cursor: default;
-		height: 5em;
+		height: 3em;
 		left: 0;
-		line-height: 5em;
+		line-height: 3em;
 		position: fixed;
 		text-align: right;
 		top: 0;

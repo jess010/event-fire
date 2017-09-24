@@ -27,6 +27,11 @@ module.exports = {
         test: /\.svg$|\.ttf?|\.woff$|\.woff2|\.eof|\.eot/,
         loader: 'file-loader'
       }
+    ],
+    loaders: [
+       //...
+       {test: /node_modules[\/\\]jsdom[\/\\]lib[\/\\]jsdom[\/\\]living[\/\\]generated[\/\\]MutationEvent\.js$/,
+        loader: "ignore-loader"},
     ]
   }
 }

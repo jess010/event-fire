@@ -1,6 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import axios from 'axios'
+import getEventListeners from '../utils/event-listeners'
+//import jsdom from 'jsdom'
+//const { JSDOM } = jsdom
 
 /**
  * Home Component:
@@ -11,7 +14,10 @@ export default class Home extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      input: ''
+      input: '',
+      doc: '',
+      // fakeDOM: {},
+      // elementsWithListeners: ''
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -29,14 +35,26 @@ export default class Home extends Component {
     event.preventDefault()
     const url = this.state.input // if time, add error messaging to catch things that aren't URLs
     this.setState({input: ''})
-    // window.location.href = url
-    // setTimeout(function () {console.log(window)}, 3000)
-    axios.get(url)
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
-    // const targetPage = window.open(url, 'targetWindow', "location=yes")
-    // console.log(targetPage.document)
 
+    // const dom = new JSDOM(``, {
+    //   url: url,
+    //   referrer: "https://www.html5rocks.com/en/tutorials/cors/",
+    //   contentType: "text/html",
+    //   userAgent: "Mellblomenator/9000",
+    //   includeNodeLocations: true
+    // });
+
+    axios.get(url)
+    .then(res => res.data)
+    .then(doc => this.setState({doc}))
+    .catch(err => console.log(err))
+
+    // const doc = this.state.doc
+
+    // axios.post('/api/pageTests', {url, doc})
+    // .then(res => res.sendStatus())
+    // .then(_ => this.setState({doc: ''}))
+    // .catch(err => console.log(err))
   }
 
   render () {
@@ -58,6 +76,12 @@ export default class Home extends Component {
   }
 }
 
+     // window.location.href = url
+    // setTimeout(function () {console.log(window)}, 3000)
+
+
+    // const targetPage = window.open(url, 'targetWindow', "location=yes")
+    // console.log(targetPage.document)
 
 
     // function createCORSRequest(method, url) {
@@ -88,3 +112,4 @@ export default class Home extends Component {
     //   throw new Error('CORS not supported');
     // }
     // console.log(xhr)
+

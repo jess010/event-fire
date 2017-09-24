@@ -7,11 +7,11 @@ import { NavLink, Link } from 'react-router-dom'
 */
 export default function Navbar () {
   return (
-    <div>
-        <nav className="navbar-nav">
-            <ul>
-                <Link to='/'>Home</Link>
-                <Link to='/honey'>OK</Link>
+    <div className='nav-div'>
+        <nav className="my-nav">
+            <ul className='nav-list'>
+                <Link className='nav-link' to='/'>Home</Link>
+                <Link className='nav-link' to='/honey'>OK</Link>
             </ul>
         </nav>
     </div>

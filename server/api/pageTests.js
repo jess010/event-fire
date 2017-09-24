@@ -5,9 +5,7 @@ module.exports = router
 
 // GET /api/pageTest/
 router.get('/', (req, res, next) => {
-  console.log("One line after GET")
   PageTest.findAll()
-  console.log("Made it to the first line of 'findAll'")
   .then(pagetests => {
     res.json(pagetests)
   })

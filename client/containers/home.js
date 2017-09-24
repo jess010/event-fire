@@ -15,7 +15,7 @@ export default class Home extends Component {
     super(props)
     this.state = {
       input: '',
-      doc: '',
+      // doc: '',
       // fakeDOM: {},
       // elementsWithListeners: ''
     }
@@ -44,17 +44,17 @@ export default class Home extends Component {
     //   includeNodeLocations: true
     // });
 
-    axios.get(url)
-    .then(res => res.data)
-    .then(doc => this.setState({doc}))
-    .catch(err => console.log(err))
+    // axios.get(url)
+    // .then(res => res.data)
+    // .then(doc => this.setState({doc}))
+    // .catch(err => console.log(err))
 
     // const doc = this.state.doc
 
-    // axios.post('/api/pageTests', {url, doc})
-    // .then(res => res.sendStatus())
-    // .then(_ => this.setState({doc: ''}))
-    // .catch(err => console.log(err))
+    axios.post('/api/pageTests', {url})
+    .then(res => res.sendStatus(201))
+    .then(_ => this.setState({doc: ''}))
+    .catch(err => console.log(err))
   }
 
   render () {

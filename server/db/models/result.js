@@ -1,14 +1,31 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
+const PageTest = require('./pageTest')
 
 const Result = db.define('result', {
-  // event and pageTest ID's are added from association and result ID is the native ID field
-  outcome: {
-    type: Sequelize.ENUM('fired', 'fizzled'),
+  // pageTest ID added from association and result ID is the native ID field
+  tagName: {
+    type: Sequelize.STRING,
     allowNull: false
   },
-  eventMsg: {   // Error message (if any)
-    type: Sequelize.TEXT
+  href: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  innerHTML: {
+    type: Sequelize.TEXT,
+    allowNull: false
+  },
+  outcome: {
+    type: Sequelize.ENUM('Fired', 'Fizzled'),
+    allowNull: false,
+    defaultValue: 'Fizzled'
+  }
+}, {
+  defaultScope: {
+    include: [
+      {model: PageTest}
+    ]
   }
 })
 

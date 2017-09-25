@@ -1,6 +1,5 @@
 const router = require('express').Router()
 const {PageTest, Result} = require('../db/models/')
-console.log("PageTest on api pageTests", PageTest)
 module.exports = router
 
 // GET /api/pageTest/

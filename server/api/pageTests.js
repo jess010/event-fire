@@ -12,6 +12,15 @@ router.get('/', (req, res, next) => {
   .catch(next);
 })
 
+// GET /api/pageTest/:id
+router.get('/:id', (req, res, next) => {
+  PageTest.findById(req.params.id)
+  .then(pagetest => {
+    res.json(pagetest)
+  })
+  .catch(next);
+})
+
 // POST /api/pageTest/
 router.post('/', (req, res, next) => {
   PageTest.create(req.body);

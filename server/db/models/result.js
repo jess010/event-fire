@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
 const PageTest = require('./pageTest')
+const attributes = require('../../utils/webdriver')
 
 const Result = db.define('result', {
   // pageTest ID added from association and result ID is the native ID field
@@ -28,5 +29,12 @@ const Result = db.define('result', {
     ]
   }
 })
+
+attributes()
+.then(atts => console.log(atts))
+
+// Result.createResult = function () {
+
+// }
 
 module.exports = Result

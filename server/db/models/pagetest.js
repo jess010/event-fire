@@ -14,12 +14,5 @@ const PageTest = db.define('pageTest', {
 })
 
 
-
 module.exports = PageTest
 
-// ,
-  // doc: {
-  //   type: Sequelize.TEXT,
-  //   allowNull: false,
-  //   set
-  // }

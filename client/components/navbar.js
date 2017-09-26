@@ -11,7 +11,7 @@ export default function Navbar () {
         <nav className="my-nav">
             <ul className='nav-list'>
                 <Link className='nav-link' to='/'>Home</Link>
-                <Link className='nav-link' to='/honey'>OK</Link>
+                <Link className='nav-link' to='/oldflames'>Old Flames</Link>
             </ul>
         </nav>
     </div>

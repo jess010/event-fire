@@ -35,7 +35,6 @@ function getElementsFromDriver (url) {
                 // Get the 'A' elements
                 driver.wait(until.elementsLocated(By.tagName('a')), 5000, 'Took too long')
                 .then(_ => {
-                    console.log(l)
                     return driver.findElements(By.tagName('a'))
                 })
                 // Slice out the ones already used

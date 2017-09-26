@@ -3,7 +3,6 @@ const express = require('express')
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const db = require('./db')
-const domContent = require('./jsdom-test')
 const PORT = process.env.PORT || 3407
 const app = express()
 module.exports = app
@@ -52,7 +51,7 @@ const startListening = () => {
 
 }
 
-const syncDb = () => db.sync()
+const syncDb = () => db.sync({force: true})
 
 // This evaluates as true when this file is run directly from the command line,
 // i.e. when we say 'node server/index.js' (or 'nodemon server/index.js', or 'nodemon server', etc)
@@ -62,7 +61,6 @@ if (require.main === module) {
   syncDb()
     .then(createApp)
     .then(startListening)
-    .then(console.log(domContent))
 } else {
   createApp()
 }

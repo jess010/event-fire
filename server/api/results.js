@@ -1,5 +1,7 @@
 const router = require('express').Router()
 const {PageTest, Result} = require('../db/models/')
+const webby = require('../utils/webdriver-hailmary')
+
 module.exports = router
 
 // GET /api/result/
@@ -33,11 +35,25 @@ router.get('/:pageTestId', (req, res, next) => {
   .catch(next);
 })
 
-// POST /api/pageTest/
+// POST /api/result/
 router.post('/', (req, res, next) => {
   // Need to add something to populate the PageTest association!!!!
   // And also to take into account that we are likely going to want to create multiple at one time.
   // Might should use 'bulkCreate' method.
-  Result.create(req.body)
-  res.sendStatus(201);
+  const url = req.body.url
+  webby(url)
+  .then(data => Result.createResultsForPage(data, url))
+  .then(_ => res.sendStatus(201))
+  .catch(next)
 })
+
+
+
+
+
+
+
+
+
+
+

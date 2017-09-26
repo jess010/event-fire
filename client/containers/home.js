@@ -15,9 +15,6 @@ export default class Home extends Component {
     super(props)
     this.state = {
       input: '',
-      // doc: '',
-      // fakeDOM: {},
-      // elementsWithListeners: ''
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -36,24 +33,11 @@ export default class Home extends Component {
     const url = this.state.input // if time, add error messaging to catch things that aren't URLs
     this.setState({input: ''})
 
-    // const dom = new JSDOM(``, {
-    //   url: url,
-    //   referrer: "https://www.html5rocks.com/en/tutorials/cors/",
-    //   contentType: "text/html",
-    //   userAgent: "Mellblomenator/9000",
-    //   includeNodeLocations: true
-    // });
-
-    // axios.get(url)
-    // .then(res => res.data)
-    // .then(doc => this.setState({doc}))
-    // .catch(err => console.log(err))
-
-    // const doc = this.state.doc
-
     axios.post('/api/pageTests', {url})
-    .then(res => res.sendStatus(201))
     .then(_ => this.setState({doc: ''}))
+    .catch(err => console.log(err))
+
+    axios.post('api/results', {url})
     .catch(err => console.log(err))
   }
 

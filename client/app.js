@@ -5,7 +5,7 @@ import React from 'react'
 import {Router} from 'react-router'
 import {Route, Switch} from 'react-router-dom'
 import { Home } from './containers'
-import { Navbar } from './components'
+import { Navbar, TestResults } from './components'
 
 
 /**
@@ -18,7 +18,7 @@ export default function App () {
         <Navbar/>
         <Switch>
           {/* Routes placed here are available to all visitors */}
-
+          <Route exact path='/test/:pageTestId' component={TestResults}/>
           <Route exact path='/' component={Home}/>
         </Switch>
       </div>
@@ -26,12 +26,3 @@ export default function App () {
   )
 }
 
-
-
-// {
-//   isLoggedIn &&
-//     <Switch>
-//       {/* Routes placed here are only available after logging in */}
-//       <Route path='/home' component={UserHome} />
-//     </Switch>
-// }

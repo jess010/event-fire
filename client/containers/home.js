@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { NavLink, Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import axios from 'axios'
 import getEventListeners from '../utils/event-listeners'
+
 //import jsdom from 'jsdom'
 //const { JSDOM } = jsdom
 
@@ -10,7 +11,7 @@ import getEventListeners from '../utils/event-listeners'
  * Has search bar and button to retrieve events associated with that thing.
  * Needs state to contain the
 */
-export default class Home extends Component {
+class Home extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -31,13 +32,18 @@ export default class Home extends Component {
   handleSubmit (event) {
     event.preventDefault()
     const url = this.state.input // if time, add error messaging to catch things that aren't URLs
+    let pageTestId;
     this.setState({input: ''})
 
     axios.post('/api/pageTests', {url})
-    .then(_ => this.setState({doc: ''}))
+    .then(pt => {
+      pageTestId = pt.data.id
+    })
+    .then(_ => this.setState({doc: ''})) //shouldn't this be input?
     .catch(err => console.log(err))
 
     axios.post('api/results', {url})
+    .then(_ => this.props.history.push(`/test/${pageTestId}`))
     .catch(err => console.log(err))
   }
 
@@ -60,40 +66,8 @@ export default class Home extends Component {
   }
 }
 
+export default withRouter(Home)
      // window.location.href = url
     // setTimeout(function () {console.log(window)}, 3000)
 
-
-    // const targetPage = window.open(url, 'targetWindow', "location=yes")
-    // console.log(targetPage.document)
-
-
-    // function createCORSRequest(method, url) {
-    //   var xhr = new XMLHttpRequest();
-    //   if ("withCredentials" in xhr) {
-    //     // Check if the XMLHttpRequest object has a "withCredentials" property.
-    //     // "withCredentials" only exists on XMLHTTPRequest2 objects.
-    //     xhr.open(method, url, true);
-
-    //   } else if (typeof XDomainRequest != "undefined") {
-
-    //   // Otherwise, check if XDomainRequest.
-    //    // XDomainRequest only exists in IE, and is IE's way of making CORS requests.
-    //   xhr = new XDomainRequest();
-    //   xhr.open(method, url);
-
-    //   } else {
-
-    //     // Otherwise, CORS is not supported by the browser.
-    //     xhr = null;
-
-    //   }
-    //   return xhr;
-    // }
-
-    // var xhr = createCORSRequest('GET', url);
-    // if (!xhr) {
-    //   throw new Error('CORS not supported');
-    // }
-    // console.log(xhr)
 

@@ -32,12 +32,11 @@ const Result = db.define('result', {
 // .then(atts => console.log(atts))
 
 Result.createResultsForPage = function (bulkAttData, url) {
-  // const asyncWebby =  webby(url, function (err, res) {
-  //   if (err) console.err(err)
-  //   console.log(res)
-  // })
-  // asyncWebby(url)
-  // .then(bulkAttData => {
+    // // Issue with the 'findAll' version, throwing errors:
+    // // "Unhandled rejection Error: Invalid value [object SequelizeInstance:pageTest]"
+    // // Using code below in meantime as workaround, does not work with multiple instances of same URL
+
+    //PageTest.findAll({ limit: 1, where: { url }, order: [['createdAt', 'DESC']] })
     PageTest.findOne({ where: { url } }).then(val => val)
     .then(pt => bulkAttData.map(attData => {
       Result.create({

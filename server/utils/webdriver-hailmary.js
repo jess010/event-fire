@@ -19,23 +19,19 @@ function webby (u) {
     .then(elements => {
         return Promise.all(elements.map(element => {
             return Promise.all(['tagName', 'href', 'innerHTML']
-            .map(attribute => element.getAttribute(attribute).then(attValue => {
-                return attValue.trim() //attArr.push(thing.trim())
-            })))
+            .map(attribute => element.getAttribute(attribute)
+                 .then(attValue => {
+                    return attValue.trim() //attArr.push(thing.trim())
+                })
+            ))
         }))
     })
     .then(attValues => attValues)
+        // If proceed with driver quit, the results table doesn't get populated, letting browser stay open for time being.
         // .then(_ => driver.quit())
-        //.catch(err => console.error(err))
+        // .catch(err => console.error(err))
 }
 
-//const asyncWebby =
-
-// webby(url, function (err, res) {
-//     if (err) console.err(err)
-//     console.log(res)
-// })
-
-//asyncWebby.then(val => console.log(val))
+// webby(url).then(val => console.log(val))
 
 module.exports = webby

@@ -22,7 +22,6 @@ router.get('/', (req, res, next) => {
 //   .catch(next);
 // })
 
-<<<<<<< HEAD
 // GET /api/results/test/:pageTestId -> to be used for results page.
 router.get('/test/:pageTestId', (req, res, next) => {
   Result.findAll({
@@ -32,17 +31,6 @@ router.get('/test/:pageTestId', (req, res, next) => {
   })
   .then(results => {
     res.json(results)
-=======
-// GET /api/result/:pageTestId -> to be used for results page.
-router.get('/:id', (req, res, next) => {
-  Result.findOne({
-    // include: [{
-    //   model: PageTest,
-    //   as: 'PageTest',
-    // where: { pageTest_id: req.params.id }
-      where: { id: 1 }
-    // }]
->>>>>>> 87fd02de0967b38ba14cc560627bd6f2a231c6f3
   })
   .then(results => console.log("Final results", results))
 

@@ -20,13 +20,16 @@ const Result = db.define('result', {
     type: Sequelize.ENUM('Fired', 'Fizzled'),
     defaultValue: 'Fired'
   }
-}, {
-  defaultScope: {
-    include: [
-      {model: PageTest}
-    ]
-  }
-})
+}
+// , {
+//   defaultScope: {
+//     include: [{
+//       model: PageTest,
+//       as: 'PageTest'
+//     }]
+//   }
+// }
+)
 
 // attributes()
 // .then(atts => console.log(atts))
@@ -38,6 +41,7 @@ Result.createResultsForPage = function (bulkAttData, url) {
 
     //PageTest.findAll({ limit: 1, where: { url }, order: [['createdAt', 'DESC']] })
     PageTest.findOne({ where: { url } }).then(val => val)
+
     .then(pt => bulkAttData.map(attData => {
       Result.create({
         tagName: attData[0],

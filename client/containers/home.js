@@ -39,11 +39,12 @@ class Home extends Component {
     .then(pt => {
       pageTestId = pt.data.id
     })
-    .then(_ => this.setState({doc: ''})) //shouldn't this be input?
-    .catch(err => console.log(err))
-
-    axios.post('api/results', {url})
-    .then(_ => this.props.history.push(`/test/${pageTestId}`))
+    .then(_ => this.setState({input: ''}))
+    .then(_ => axios.post('api/results', {url}))
+    .then(_ => {
+      console.log("This is pagetestid", pageTestId)
+      return this.props.history.push(`/test/${pageTestId}`)
+    })
     .catch(err => console.log(err))
   }
 

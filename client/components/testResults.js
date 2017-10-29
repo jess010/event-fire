@@ -13,12 +13,13 @@ export default class TestResults extends Component {
     this.state = {
       results: '',
     }
+    this.fetchResults = this.fetchResults.bind(this)
   }
 
-  componentDidMount () {
+  fetchResults () {
     const pageTestId = this.props.match.params.pageTestId
-    axios.get(`api/results/${pageTestId}`)
-    .then(res => console.log(res))
+    axios.get(`/api/results/test/${pageTestId}`)
+    .then(res => console.log(res.data))
     // .then(res => res.data)
     // .then(results => this.setState({ results }))
     // .then(_ => console.log(this.state.results))
@@ -26,6 +27,7 @@ export default class TestResults extends Component {
   }
 
   render () {
+    this.fetchResults()
     return (
       <div className='test-results'>
         <h1>A respectable component</h1>

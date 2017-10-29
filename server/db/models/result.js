@@ -46,8 +46,8 @@ Result.createResultsForPage = function (bulkAttData, url) {
       })
       .then(result => result.setPageTest(pt))
     }))
-  // }
-  // )
+    .then(_ => console.log("create results complete"))
+    .catch(err => console.error(err))
 }
 
 module.exports = Result

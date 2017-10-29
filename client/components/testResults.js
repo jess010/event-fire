@@ -15,9 +15,10 @@ export default class TestResults extends Component {
     }
   }
 
-  componentDidMount () {
+  fetchResults () {
     const pageTestId = this.props.match.params.pageTestId
-    axios.get(`api/results/${pageTestId}`)
+    console.log(pageTestId)
+    axios.get(`/api/results/${pageTestId}`)
     .then(res => console.log(res))
     // .then(res => res.data)
     // .then(results => this.setState({ results }))
@@ -26,6 +27,7 @@ export default class TestResults extends Component {
   }
 
   render () {
+    this.fetchResults()
     return (
       <div className='test-results'>
         <h1>A respectable component</h1>

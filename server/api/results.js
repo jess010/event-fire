@@ -13,26 +13,40 @@ router.get('/', (req, res, next) => {
   .catch(next);
 })
 
-// GET /api/result/:id
-router.get('/:id', (req, res, next) => {
-  Result.findById(req.params.id)
-  .then(result => {
-    res.json(result)
-  })
-  .catch(next);
-})
+// // GET /api/result/:id
+// router.get('/:id', (req, res, next) => {
+//   Result.findById(req.params.id)
+//   .then(result => {
+//     res.json(result)
+//   })
+//   .catch(next);
+// })
 
 // GET /api/result/:pageTestId -> to be used for results page.
-router.get('/:pageTestId', (req, res, next) => {
-  Result.findAll({
-    where: {
-      pageTestId: req.params.pageId
-    }
+router.get('/:id', (req, res, next) => {
+  Result.findOne({
+    // include: [{
+    //   model: PageTest,
+    //   as: 'PageTest',
+    // where: { pageTest_id: req.params.id }
+      where: { id: 1 }
+    // }]
   })
-  .then(result => {
-    res.json(result)
-  })
-  .catch(next);
+  .then(results => console.log("Final results", results))
+
+  // console.log('api/results/:ptid', req.params.id)
+  // PageTest.findOne({ where: {id: req.params.id} })
+  // .then(pageTest => {
+  //   console.log("Page test inside route", pageTest.dataValues)
+  //   return Result.findAll({
+  //     where: { pageTest: pageTest.dataValues }
+  //   })
+  // })
+  // .then(results => {
+  //   console.log("Results", results)
+  //   //res.json(results)
+  // })
+  // .catch(next);
 })
 
 // POST /api/result/

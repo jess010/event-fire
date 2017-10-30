@@ -13,14 +13,14 @@ router.get('/', (req, res, next) => {
   .catch(next);
 })
 
-// // GET /api/result/:id
-// router.get('/:id', (req, res, next) => {
-//   Result.findById(req.params.id)
-//   .then(result => {
-//     res.json(result)
-//   })
-//   .catch(next);
-// })
+// GET /api/result/:id
+router.get('/:id', (req, res, next) => {
+  Result.findById(req.params.id)
+  .then(result => {
+    res.json(result)
+  })
+  .catch(next);
+})
 
 // GET /api/results/test/:pageTestId -> to be used for results page.
 router.get('/test/:pageTestId', (req, res, next) => {
@@ -29,24 +29,8 @@ router.get('/test/:pageTestId', (req, res, next) => {
       pageTest_id: req.params.pageTestId
     }
   })
-  .then(results => {
-    res.json(results)
-  })
-  .then(results => console.log("Final results", results))
-
-  // console.log('api/results/:ptid', req.params.id)
-  // PageTest.findOne({ where: {id: req.params.id} })
-  // .then(pageTest => {
-  //   console.log("Page test inside route", pageTest.dataValues)
-  //   return Result.findAll({
-  //     where: { pageTest: pageTest.dataValues }
-  //   })
-  // })
-  // .then(results => {
-  //   console.log("Results", results)
-  //   //res.json(results)
-  // })
-  // .catch(next);
+  .then(results => res.json(results))
+  .catch(next);
 })
 
 // POST /api/results/
@@ -54,20 +38,8 @@ router.post('/', (req, res, next) => {
   // And also to take into account that we are likely going to want to create multiple at one time.
   // Might should use 'bulkCreate' method.
   const url = req.body.url
-  webby(url)
+  return webby(url)
   .then(data => Result.createResultsForPage(data, url))
-  .then(_ => console.log("I am complete"))
   .then(_ => res.sendStatus(201))
   .catch(next)
 })
-
-
-
-
-
-
-
-
-
-
-

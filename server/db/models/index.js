@@ -7,7 +7,7 @@ const Result = require('./result')
 // Associations
 
 Result.belongsTo(PageTest, {foreignKey: 'pageTest_id'})
-PageTest.hasMany(Result, {foreignKey: 'pageTest_id'})
+PageTest.hasMany(Result, {as: 'PageTest', foreignKey: 'pageTest_id'})
 
 
 // //One to one relationship between event and event result

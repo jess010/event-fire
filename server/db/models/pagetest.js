@@ -13,6 +13,5 @@ const PageTest = db.define('pageTest', {
   }
 })
 
-
 module.exports = PageTest
 

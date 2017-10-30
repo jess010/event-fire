@@ -20,34 +20,37 @@ const Result = db.define('result', {
     type: Sequelize.ENUM('Fired', 'Fizzled'),
     defaultValue: 'Fired'
   }
-}, {
-  defaultScope: {
-    include: [
-      {model: PageTest}
-    ]
-  }
-})
+}
+// , {
+//   defaultScope: {
+//     include: [{
+//       model: PageTest,
+//       as: 'PageTest'
+//     }]
+//   }
+// }
+)
 
 // attributes()
 // .then(atts => console.log(atts))
 
 Result.createResultsForPage = function (bulkAttData, url) {
     // // Issue with the 'findAll' version, throwing errors:
+    // return PageTest.findAll({ limit: 1, where: { url }, order: [['createdAt', 'DESC']] })
     // // "Unhandled rejection Error: Invalid value [object SequelizeInstance:pageTest]"
     // // Using code below in meantime as workaround, does not work with multiple instances of same URL
 
-    //PageTest.findAll({ limit: 1, where: { url }, order: [['createdAt', 'DESC']] })
-    PageTest.findOne({ where: { url } }).then(val => val)
-    .then(pt => bulkAttData.map(attData => {
-      Result.create({
+    return PageTest.findOne({ where: { url } })
+    .then(pt => Promise.all(bulkAttData.map(attData => {
+      return Result.create({
         tagName: attData[0],
         href: attData[1],
         innerHTML: attData[2],
       })
       .then(result => result.setPageTest(pt))
-    }))
-  // }
-  // )
+    })))
+    .then(_ => console.log("create results complete"))
+    .catch(err => console.error(err))
 }
 
 module.exports = Result

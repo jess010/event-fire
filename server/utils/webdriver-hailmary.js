@@ -21,7 +21,7 @@ function webby (u) {
             return Promise.all(['tagName', 'href', 'innerHTML']
             .map(attribute => element.getAttribute(attribute)
                  .then(attValue => {
-                    return attValue.trim() //attArr.push(thing.trim())
+                    return attValue.trim()
                 })
             ))
         }))

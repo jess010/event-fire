@@ -13,7 +13,7 @@ router.get('/', (req, res, next) => {
   .catch(next);
 })
 
-// GET /api/result/:id
+// GET /api/result/:id -> id for a specific URL/event result entry (not full page test)
 router.get('/:id', (req, res, next) => {
   Result.findById(req.params.id)
   .then(result => {
@@ -35,11 +35,10 @@ router.get('/test/:pageTestId', (req, res, next) => {
 
 // POST /api/results/
 router.post('/', (req, res, next) => {
-  // And also to take into account that we are likely going to want to create multiple at one time.
-  // Might should use 'bulkCreate' method.
   const url = req.body.url
   return webby(url)
   .then(data => Result.createResultsForPage(data, url))
+  .then(_ => console.log("Result post request complete"))
   .then(_ => res.sendStatus(201))
   .catch(next)
 })

@@ -54,9 +54,6 @@ export default class TestResults extends Component {
     return (
       <div className='test-results'>
         <h1>Results for Page Test</h1>
-        {/*{this.state.results.map(result => {
-          <p>{result}</p>
-        })}*/}
         <ReactTable data={this.state.results} columns={columns} />
       </div>
     );

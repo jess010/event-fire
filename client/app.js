@@ -5,7 +5,7 @@ import React from 'react'
 import {Router} from 'react-router'
 import {Route, Switch} from 'react-router-dom'
 import { Home } from './containers'
-import { Navbar, TestResults } from './components'
+import { Navbar, TestResults, OldFlames } from './components'
 
 
 /**
@@ -19,6 +19,7 @@ export default function App () {
         <Switch>
           {/* Routes placed here are available to all visitors */}
           <Route exact path='/test/:pageTestId' component={TestResults}/>
+          <Route exact path='/oldflames' component={OldFlames}/>
           <Route exact path='/' component={Home}/>
         </Switch>
       </div>

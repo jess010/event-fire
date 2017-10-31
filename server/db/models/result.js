@@ -36,7 +36,9 @@ const Result = db.define('result', {
 
 Result.createResultsForPage = function (bulkAttData, url) {
     // // Issue with the 'findAll' version, throwing errors:
+
     // return PageTest.findAll({ limit: 1, where: { url }, order: [['createdAt', 'DESC']] })
+
     // // "Unhandled rejection Error: Invalid value [object SequelizeInstance:pageTest]"
     // // Using code below in meantime as workaround, does not work with multiple instances of same URL
 

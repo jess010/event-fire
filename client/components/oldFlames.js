@@ -27,7 +27,14 @@ export default class OldFlames extends Component {
 
 
   render () {
-    const columns = []
+    const columns = [{
+      Header: 'Test ID',
+      accessor: 'id'
+    }, {
+      id: 'testUrl',
+      Header: 'Test URL',
+      accessor: dataPoint => <Link to={`/test/${dataPoint.id}`}>{dataPoint.url}</Link>
+    }]
 
     return (
       <div id="old-flames">

@@ -21,6 +21,7 @@ function webby (u) {
             return Promise.all(['tagName', 'href', 'innerHTML']
             .map(attribute => element.getAttribute(attribute)
                  .then(attValue => {
+                    if (!attValue) return 'No value'
                     return attValue.trim()
                 })
             ))

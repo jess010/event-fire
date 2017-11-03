@@ -36,7 +36,7 @@ router.get('/test/:pageTestId', (req, res, next) => {
 // POST /api/results/
 router.post('/', (req, res, next) => {
   const url = req.body.url
-  return Promise.resolve(webby(url))
+  return webby(url)
   .then(data => Result.createResultsForPage(data, url))
   .then(_ => console.log("Result post request complete"))
   .then(_ => res.sendStatus(201))
